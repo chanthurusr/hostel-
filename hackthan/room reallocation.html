@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Reallocation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('photo1716863925 (5).jpeg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Room Reallocation</h1>
+    </header>
+    <div class="container">
+        <form id="roomForm">
+            <div class="form-group">
+                <label for="currentRoomNumber">Current Room Number:</label>
+                <input type="text" id="currentRoomNumber" name="currentRoomNumber" placeholder="Enter current room number">
+            </div>
+            <div class="form-group">
+                <label for="currentRoomType">Current Room Type:</label>
+                <select id="currentRoomType" name="currentRoomType">
+                    <option value="">Select room type</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Suite">Suite</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupantName">Occupant Name:</label>
+                <input type="text" id="occupantName" name="occupantName" placeholder="Enter occupant name">
+            </div>
+            <div class="form-group">
+                <label for="preferredRoomNumber">Preferred Room Number:</label>
+                <input type="text" id="preferredRoomNumber" name="preferredRoomNumber" placeholder="Enter preferred room number">
+            </div>
+            <div class="form-group">
+                <label for="preferredRoomType">Preferred Room Type:</label>
+                <select id="preferredRoomType" name="preferredRoomType">
+                    <option value="">Select preferred room type</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Suite">Suite</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <button onclick="goBack()">Back</button>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+        
+        document.getElementById("roomForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            var currentRoomNumber = formData.get("currentRoomNumber");
+            var currentRoomType = formData.get("currentRoomType");
+            var occupantName = formData.get("occupantName");
+            var preferredRoomNumber = formData.get("preferredRoomNumber");
+            var preferredRoomType = formData.get("preferredRoomType");
+            alert("Current Room Number: " + currentRoomNumber +
+                  "\nCurrent Room Type: " + currentRoomType +
+                  "\nOccupant Name: " + occupantName +
+                  "\nPreferred Room Number: " + preferredRoomNumber +
+                  "\nPreferred Room Type: " + preferredRoomType);
+        });
+    </script>
+</body>
+</html>

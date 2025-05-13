@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Allocation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('background for room.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.10);
+        }
+        .header {
+            background: url('nukll.jpeg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* 30% transparency */
+        }
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 36px;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #007bff;
+        }
+        .footer p {
+            margin: 10px 0;
+        }
+        .availability {
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 8px;
+            color: #721c24;
+            margin-bottom: 10px;
+        }
+        .register-link {
+            font-weight: bold;
+        }
+        .room-reallocation-link {
+            font-weight: bold;
+        }
+        .back-home-link {
+            font-weight: bold;
+        }
+        .rooms-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .room {
+            display: inline-block;
+            width: 120px;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            background-color: transparent; 
+            color: black; 
+            border: 2px solid transparent; 
+            transition: background-color 0.3s, border-color 0.3s; 
+        }
+        .room:hover {
+            background-color: rgba(255, 255, 255, 0.5); 
+            border-color: #fff; /* Border color on hover */
+        }
+        .available {
+            background-color: #d4edda;
+        }
+        .occupied {
+            background-color: #f8d7da;
+        }
+        .room-details {
+            display: none;
+            padding: 10px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Room Availability</h1>
+    </header>
+
+    <div class="rooms-container" id="rooms-container"></div>
+    <div id="room-details" class="room-details"></div>
+
+    <footer class="footer">
+        <div class="availability">Availability: <span id="availability"></span></div>
+        <p><a href="backend-register-page.html" class="register-link">Register for Room</a></p>
+        <p><a href="room reallocation.html" class="room-reallocation-link">Room Reallocation</a></p>
+        <p><a href="menu.html" class="back-home-link">Back Home</a></p>
+    </footer>
+
+    <script>
+        // Sample data
+        const rooms = [];
+        let availableRooms = 0;
+        for (let i = 1; i <= 100; i++) { // Changed number of rooms to 100
+            const isOccupied = Math.random() > 0.5;
+            rooms.push({
+                number: i,
+                isOccupied: isOccupied,
+                details: {
+                    students: isOccupied ? Math.floor(Math.random() * 3) + 1 : 0, // Random number of students between 1 and 3 if occupied
+                    studentID: isOccupied ? 'S' + Math.floor(Math.random() * 9000 + 1000) : '', // Random student ID if occupied
+                    institution: isOccupied ? 'Institution ' + (Math.floor(Math.random() * 5) + 1) : '' // Random institution if occupied
+                }
+            });
+            if (!isOccupied) availableRooms++;
+        }
+
+        const roomsContainer = document.getElementById('rooms-container');
+        const roomDetails = document.getElementById('room-details');
+        const availabilitySpan = document.getElementById('availability');
+
+        rooms.forEach(room => {
+            const roomDiv = document.createElement('div');
+            roomDiv.className = `room ${room.isOccupied ? 'occupied' : 'available'}`;
+            roomDiv.textContent = `Room ${room.number}`;
+            roomDiv.onclick = () => showRoomDetails(room);
+            roomsContainer.appendChild(roomDiv);
+        });
+
+        availabilitySpan.textContent = `${availableRooms} available`;
+
+        function showRoomDetails(room) {
+            if (room.isOccupied) {
+                roomDetails.innerHTML = `
+                    <h3>Room ${room.number} Details</h3>
+                    <p><strong>Number of Students:</strong> ${room.details.students}</p>
+                    <p><strong>Student ID:</strong> ${room.details.studentID}</p>
+                    <p><strong>Institution:</strong> ${room.details.institution}</p>
+                `;
+            } else {
+                roomDetails.innerHTML = `<h3>Room ${room.number} is Available</h3>`;
+            }
+            roomDetails.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

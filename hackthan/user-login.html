@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            display: flex;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 800px;
+            max-width: 100%;
+        }
+        
+        .login-image {
+            width: 50%;
+            background: url(src.jpeg) no-repeat center center;
+            background-size: cover;
+        }
+        
+        .login-form {
+            width: 50%;
+            padding: 40px 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        
+        p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .card {
+            color: #46d0e2;
+        }
+        
+        .multi-glow {
+            box-shadow: 0 0 10px 10px #a051eb, 0 0 10px 10px #f3fc00, 0 0 10px 10px #ff1493;
+        }
+        
+        a:link,
+        a:visited {
+            background-color: #2995ec;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        a:hover,
+        a:active {
+            background-color: rgb(135, 24, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card multi-glow">
+        <div class="login-container">
+            <div class="login-image">
+                <!-- Your login image -->
+            </div>
+            <div class="login-form">
+                <div>
+                    <h1>NANDHA HOSTEL</h1>
+                </div>
+                <form id="loginForm">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" name="email" required />
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <button type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value.trim();
+
+            if (email === 'chanthuru@gmail.com' && password === '1234') {
+                window.location.href = 'menu.html';
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

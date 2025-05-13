@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        
+        header {
+            background-color: blue;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: lightgray;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .container {
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        .container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .container input[type="submit"] {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   
+    <header>
+        <h1>REGISTER</h1>
+    </header>
+
+    <div class="container">
+        <form action="#" method="post">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+            <label for="studentID">Student ID:</label>
+            <input type="text" id="studentID" name="studentID" required>
+            <label for="institutionName">Institution Name:</label>
+            <input type="text" id="institutionName" name="institutionName" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+ 
+    <footer>
+        <a href="javascript:history.go(-1)">Back</a>
+    </footer>
+</body>
+</html>
